@@ -23,10 +23,10 @@
 
   <style>
     .fade {
-      animation: fade 0.4s ease;
+      animation: fade 0.35s ease;
     }
     @keyframes fade {
-      from { opacity: 0; transform: translateY(10px); }
+      from { opacity: 0; transform: translateY(8px); }
       to { opacity: 1; transform: translateY(0); }
     }
   </style>
@@ -80,10 +80,8 @@
   <div class="max-w-md w-full">
     <button onclick="showLanding()" class="text-sm text-gray-500 mb-6">← Back</button>
 
-    <h2 id="authTitle" class="text-3xl font-bold mb-2">Create an account</h2>
-    <p id="authSubtitle" class="text-gray-500 mb-6">
-      Enter your details to get started
-    </p>
+    <h2 id="authTitle" class="text-3xl font-bold mb-2"></h2>
+    <p id="authSubtitle" class="text-gray-500 mb-6"></p>
 
     <form id="authForm" class="space-y-4">
 
@@ -102,7 +100,7 @@
       <input id="confirmPassword" type="password" placeholder="Confirm password"
         class="w-full border rounded-lg px-4 py-3" />
 
-      <label class="flex items-center gap-2 text-sm text-gray-600">
+      <label id="termsWrap" class="flex items-center gap-2 text-sm text-gray-600">
         <input id="terms" type="checkbox" />
         I agree to the Terms & Conditions
       </label>
@@ -110,15 +108,14 @@
       <p id="error" class="text-sm text-red-500 hidden"></p>
 
       <button type="submit" class="w-full bg-black text-white py-3 rounded-lg">
-        Create account
+        Continue
       </button>
     </form>
 
+    <!-- ✅ FIXED FOOTER -->
     <p class="text-sm text-center text-gray-500 mt-6">
-      Don't have an account?
-      <button onclick="toggleMode()" class="font-medium underline">
-        Sign up
-      </button>
+      <span id="authFooterText"></span>
+      <button onclick="toggleMode()" class="font-medium underline ml-1" id="authFooterBtn"></button>
     </p>
   </div>
 </section>
@@ -177,14 +174,20 @@
     document.getElementById("fullName").classList.toggle("hidden", !isSignup);
     document.getElementById("username").classList.toggle("hidden", !isSignup);
     document.getElementById("confirmPassword").classList.toggle("hidden", !isSignup);
-    document.getElementById("terms").parentElement.classList.toggle("hidden", !isSignup);
+    document.getElementById("termsWrap").classList.toggle("hidden", !isSignup);
+
+    document.getElementById("authFooterText").textContent =
+      isSignup ? "Already have an account?" : "Don't have an account?";
+
+    document.getElementById("authFooterBtn").textContent =
+      isSignup ? "Sign in" : "Sign up";
   }
 
   document.getElementById("authForm").addEventListener("submit", (e) => {
     e.preventDefault();
     error.classList.add("hidden");
 
-    const fullName = document.getElementById("fullName").value.trim();
+    const fullName = fullNameEl.value?.trim?.() ?? document.getElementById("fullName").value.trim();
     const username = document.getElementById("username").value.trim();
     const email = document.getElementById("email").value.trim();
     const password = document.getElementById("password").value;
