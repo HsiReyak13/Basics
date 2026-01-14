@@ -2,8 +2,9 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>minimal.ngani!</title>
+  <title>IV of Spades - Filipino Funk Band</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Experience the retro-funk sound of IV of Spades. Join our community and stay updated with the latest music and events." />
 
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
@@ -11,279 +12,900 @@
       theme: {
         extend: {
           fontFamily: {
-            sans: ['Inter', 'system-ui', 'sans-serif'],
+            sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
           },
           colors: {
-            accent: '#F26B3A'
-          }
+            accent: {
+              50: '#FFE5E5',
+              100: '#FFCCCC',
+              200: '#FF9999',
+              300: '#FF6666',
+              400: '#FF3333',
+              500: '#CC0000',
+              600: '#990000',
+              700: '#660000',
+              800: '#330000',
+              900: '#1A0000',
+            },
+            primary: {
+              50: '#FFF4E6',
+              100: '#FFE0B3',
+              200: '#FFCC80',
+              300: '#FFB84D',
+              400: '#FFA31A',
+              500: '#E68900',
+              600: '#CC7700',
+              700: '#995500',
+              800: '#663300',
+              900: '#331A00',
+            },
+            spade: {
+              glow: '#7DD3FC',
+              dark: '#0EA5E9',
+            }
+          },
+          animation: {
+            'fade-in': 'fadeIn 0.5s ease-out',
+            'slide-up': 'slideUp 0.5s ease-out',
+            'slide-down': 'slideDown 0.3s ease-out',
+            'scale-in': 'scaleIn 0.3s ease-out',
+            'toast': 'toast 0.3s ease-out',
+          },
+          keyframes: {
+            fadeIn: {
+              '0%': { opacity: '0' },
+              '100%': { opacity: '1' },
+            },
+            slideUp: {
+              '0%': { opacity: '0', transform: 'translateY(20px)' },
+              '100%': { opacity: '1', transform: 'translateY(0)' },
+            },
+            slideDown: {
+              '0%': { opacity: '0', transform: 'translateY(-10px)' },
+              '100%': { opacity: '1', transform: 'translateY(0)' },
+            },
+            scaleIn: {
+              '0%': { opacity: '0', transform: 'scale(0.95)' },
+              '100%': { opacity: '1', transform: 'scale(1)' },
+            },
+            toast: {
+              '0%': { opacity: '0', transform: 'translateX(100%)' },
+              '100%': { opacity: '1', transform: 'translateX(0)' },
+            },
+          },
         }
       }
     }
   </script>
 
   <style>
-    .fade {
-      animation: fade 0.35s ease;
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 10px;
     }
-    @keyframes fade {
-      from { opacity: 0; transform: translateY(8px); }
-      to { opacity: 1; transform: translateY(0); }
+    ::-webkit-scrollbar-track {
+      background: #f1f1f1;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 5px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #94a3b8;
+    }
+
+    /* Smooth scroll behavior */
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* Focus visible for accessibility */
+    *:focus-visible {
+      outline: 2px solid #F26B3A;
+      outline-offset: 2px;
+    }
+
+    /* Button hover effects */
+    .btn-primary {
+      background: linear-gradient(135deg, #CC0000 0%, #990000 100%);
+      color: #FFFFFF;
+      font-weight: 700;
+      padding: 0.75rem 1.5rem;
+      border-radius: 0.5rem;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 20px rgba(204, 0, 0, 0.6), 0 0 30px rgba(204, 0, 0, 0.4);
+      border: 2px solid rgba(255, 255, 255, 0.2);
+      text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+    }
+
+    .btn-primary:hover {
+      box-shadow: 0 6px 30px rgba(204, 0, 0, 0.8), 0 0 40px rgba(204, 0, 0, 0.6);
+      transform: scale(1.05) translateY(-2px);
+      background: linear-gradient(135deg, #E60000 0%, #B30000 100%);
+    }
+
+    .btn-primary:active {
+      transform: scale(0.98);
+    }
+
+    .btn-secondary {
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      color: #FFFFFF;
+      background: rgba(0, 0, 0, 0.3);
+      padding: 0.75rem 1.5rem;
+      border-radius: 0.5rem;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(10px);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(0, 0, 0, 0.5);
+      border-color: rgba(255, 255, 255, 0.5);
+      box-shadow: 0 4px 25px rgba(255, 255, 255, 0.2);
+      transform: translateY(-2px);
+    }
+
+    .btn-outline {
+      border: 2px solid #CC0000;
+      color: #FFFFFF;
+      background: rgba(204, 0, 0, 0.2);
+      padding: 0.75rem 1.5rem;
+      border-radius: 0.5rem;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(10px);
+    }
+
+    .btn-outline:hover {
+      background: rgba(204, 0, 0, 0.4);
+      box-shadow: 0 4px 25px rgba(204, 0, 0, 0.6);
+      transform: translateY(-2px);
+    }
+
+    /* Input focus effects */
+    .input-field {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      border: 2px solid rgba(255, 255, 255, 0.2);
+      border-radius: 0.5rem;
+      background-color: rgba(0, 0, 0, 0.4);
+      color: #FFFFFF;
+      font-size: 1rem;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      outline: none;
+      box-sizing: border-box;
+      backdrop-filter: blur(10px);
+    }
+
+    .input-field::placeholder {
+      color: rgba(255, 255, 255, 0.5);
+    }
+
+    .input-field:focus {
+      border-color: #7DD3FC;
+      box-shadow: 0 0 0 4px rgba(125, 211, 252, 0.2), 0 4px 20px rgba(125, 211, 252, 0.4), inset 0 0 20px rgba(204, 0, 0, 0.3);
+      outline: none;
+      background-color: rgba(0, 0, 0, 0.6);
+      transform: scale(1.02);
+    }
+
+    .input-error {
+      border-color: #ef4444 !important;
+      background-color: #fef2f2;
+    }
+
+    .input-error:focus {
+      border-color: #ef4444 !important;
+      box-shadow: 0 0 0 4px rgba(239, 68, 68, 0.1);
+    }
+
+    /* Glass effect */
+    .glass {
+      background: rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 2px solid rgba(204, 0, 0, 0.5);
+      box-shadow: 0 4px 30px rgba(204, 0, 0, 0.3);
+    }
+
+    /* Badge pulse effect */
+    .badge-pulse {
+      animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% {
+        opacity: 1;
+      }
+      50% {
+        opacity: .7;
+      }
+    }
+
+    /* Loading spinner */
+    .spinner {
+      border: 3px solid rgba(255, 255, 255, 0.3);
+      border-top: 3px solid white;
+      border-radius: 50%;
+      width: 20px;
+      height: 20px;
+      animation: spin 0.8s linear infinite;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    /* Step progress line animation */
+    .step-line {
+      transition: all 0.4s ease;
+      background: rgba(255, 255, 255, 0.2);
+      height: 2px;
+      flex: 1;
+    }
+
+    .step-line.active {
+      background: linear-gradient(90deg, #CC0000 0%, #990000 100%);
+    }
+
+    /* Step indicator styling */
+    .step {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(0, 0, 0, 0.5);
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      color: rgba(255, 255, 255, 0.5);
+      font-weight: 600;
+      transition: all 0.4s ease;
+    }
+
+    .step.active {
+      background: linear-gradient(135deg, #CC0000 0%, #990000 100%);
+      border-color: #CC0000;
+      color: #FFFFFF;
+      box-shadow: 0 0 20px rgba(204, 0, 0, 0.6);
+    }
+
+    /* Navigation Link Styles */
+    .nav-link {
+      position: relative;
+      color: rgba(255, 255, 255, 0.8);
+      padding: 0.5rem 1rem;
+      border-radius: 0.5rem;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      text-decoration: none;
+    }
+
+    .nav-link::before {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, #CC0000 0%, #FF3333 100%);
+      transition: all 0.3s ease;
+      transform: translateX(-50%);
+    }
+
+    .nav-link:hover {
+      color: #FFFFFF;
+      background: rgba(204, 0, 0, 0.2);
+      text-shadow: 0 0 10px rgba(204, 0, 0, 0.8);
+    }
+
+    .nav-link:hover::before {
+      width: 80%;
+    }
+
+    .nav-link.active {
+      color: #FFFFFF;
+      background: rgba(204, 0, 0, 0.3);
+      text-shadow: 0 0 15px rgba(204, 0, 0, 1);
+    }
+
+    .nav-link.active::before {
+      width: 80%;
+    }
+
+    /* Navbar scroll effect */
+    nav.scrolled {
+      background: rgba(0, 0, 0, 0.9) !important;
+      border-bottom-color: rgba(204, 0, 0, 0.5) !important;
+      box-shadow: 0 8px 40px rgba(0, 0, 0, 0.8) !important;
+    }
+
+    /* Rotating radial stripes background */
+    .rotating-bg {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      width: 200vmax;
+      height: 200vmax;
+      z-index: -2;
+      transform: translate(-50%, -50%);
+      background: repeating-conic-gradient(
+        from 0deg,
+        #990000 0deg 15deg,
+        #FFD700 15deg 30deg
+      );
+      animation: rotateBg 20s linear infinite;
+      opacity: 0.25;
+    }
+
+    @keyframes rotateBg {
+      from {
+        transform: translate(-50%, -50%) rotate(0deg);
+      }
+      to {
+        transform: translate(-50%, -50%) rotate(360deg);
+      }
     }
   </style>
 </head>
 
-<body class="bg-white text-gray-900 font-sans">
+<body class="font-sans text-white" style="min-height: 100vh; position: relative; overflow-x: hidden;">
+  <!-- Rotating radial striped background -->
+  <div class="rotating-bg"></div>
+  <!-- Dark overlay -->
+  <div style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; background: linear-gradient(180deg, rgba(204, 0, 0, 0.8) 0%, rgba(153, 0, 0, 0.8) 50%, rgba(0, 0, 0, 0.9) 100%);"></div>
+  <!-- White spade at center -->
+  <div style="position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 0; width: 300px; height: 300px; opacity: 1;">
+    <img src="images/spade.png" alt="Spade" class="w-full h-full object-contain" style="filter: brightness(0) invert(1) drop-shadow(0 0 20px rgba(255, 255, 255, 0.5));">
+  </div>
 
 <!-- NAV -->
-<nav class="fixed top-0 left-0 right-0 bg-white/80 backdrop-blur border-b z-50">
-  <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
-    <span class="font-semibold text-xl">minimal.</span>
-    <div class="space-x-2">
-      <button onclick="showAuth()" class="text-gray-500 hover:text-black">
-        Sign in
+<nav id="mainNav" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300" style="background: rgba(0, 0, 0, 0.6); backdrop-filter: blur(20px); border-bottom: 2px solid rgba(204, 0, 0, 0.3); box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between items-center py-4">
+      <!-- Logo -->
+      <a href="#landing" onclick="scrollToSection('landing')" class="flex items-center gap-3 group cursor-pointer">
+        <div class="relative">
+          <img src="images/spade.png" alt="IV of Spades Logo" class="w-10 h-10 object-contain transition-all duration-300 group-hover:scale-110" style="filter: brightness(0) invert(1) drop-shadow(0 0 15px rgba(125, 211, 252, 0.8));">
+          <div class="absolute inset-0 bg-cyan-400 rounded-full blur-xl opacity-0 group-hover:opacity-50 transition-opacity duration-300"></div>
+        </div>
+        <span class="font-bold text-xl text-white transition-all duration-300 group-hover:text-red-300" style="text-shadow: 0 0 20px rgba(204, 0, 0, 0.8), 0 0 30px rgba(204, 0, 0, 0.5);">IV of Spades</span>
+      </a>
+      
+      <!-- Desktop Navigation Links -->
+      <div class="hidden lg:flex items-center space-x-1">
+        <a href="#landing" onclick="scrollToSection('landing')" class="nav-link active" data-section="landing">Home</a>
+        <a href="#features" onclick="scrollToSection('features')" class="nav-link" data-section="features">Music</a>
+        <a href="#auth" onclick="scrollToSection('auth')" class="nav-link" data-section="auth">About</a>
+        <a href="#footer" onclick="scrollToSection('footer')" class="nav-link" data-section="footer">Contact</a>
+      </div>
+      
+      <!-- Desktop Auth Buttons -->
+      <div class="hidden md:flex items-center space-x-3">
+        <button 
+          onclick="showAuth()" 
+          class="text-white hover:text-red-300 px-5 py-2 rounded-lg transition-all duration-300 hover:bg-black/40 font-semibold border border-transparent hover:border-red-600/50"
+          aria-label="Sign in to your account">
+          Sign in
+        </button>
+        <button 
+          onclick="showAuth()" 
+          class="btn-primary relative overflow-hidden group"
+          aria-label="Join IV of Spades community">
+          <span class="relative z-10">Join Now</span>
+          <div class="absolute inset-0 bg-gradient-to-r from-red-600 to-orange-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+        </button>
+      </div>
+
+      <!-- Mobile Menu Button -->
+      <button 
+        id="mobileMenuBtn" 
+        class="md:hidden p-2 rounded-lg hover:bg-black/40 transition-all duration-300 text-white relative z-50"
+        aria-label="Toggle mobile menu"
+        aria-expanded="false">
+        <svg id="menuIcon" class="w-6 h-6 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+        <svg id="closeIcon" class="w-6 h-6 transition-transform duration-300 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+        </svg>
       </button>
-      <button onclick="showAuth()" class="bg-black text-white px-4 py-2 rounded-lg">
-        Get started
-      </button>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="hidden md:hidden border-t-2 border-red-600/30 animate-slide-down" style="background: rgba(0, 0, 0, 0.85); backdrop-filter: blur(20px);">
+      <div class="px-4 py-6 space-y-3">
+        <a href="#landing" onclick="scrollToSection('landing'); closeMobileMenu();" class="block text-white hover:text-red-300 px-4 py-3 rounded-lg hover:bg-black/50 transition-all duration-300 font-semibold border-l-4 border-transparent hover:border-red-600">Home</a>
+        <a href="#features" onclick="scrollToSection('features'); closeMobileMenu();" class="block text-white hover:text-red-300 px-4 py-3 rounded-lg hover:bg-black/50 transition-all duration-300 font-semibold border-l-4 border-transparent hover:border-red-600">Music</a>
+        <a href="#auth" onclick="scrollToSection('auth'); closeMobileMenu();" class="block text-white hover:text-red-300 px-4 py-3 rounded-lg hover:bg-black/50 transition-all duration-300 font-semibold border-l-4 border-transparent hover:border-red-600">About</a>
+        <a href="#footer" onclick="scrollToSection('footer'); closeMobileMenu();" class="block text-white hover:text-red-300 px-4 py-3 rounded-lg hover:bg-black/50 transition-all duration-300 font-semibold border-l-4 border-transparent hover:border-red-600">Contact</a>
+        <div class="pt-4 border-t border-red-600/30 space-y-3">
+          <button 
+            onclick="showAuth(); closeMobileMenu();" 
+            class="w-full text-left px-4 py-3 rounded-lg hover:bg-black/50 transition-all duration-300 text-white font-semibold border border-red-600/50 hover:border-red-600">
+            Sign in
+          </button>
+          <button 
+            onclick="showAuth(); closeMobileMenu();" 
+            class="w-full btn-primary text-center">
+            Join Now
+          </button>
+        </div>
+      </div>
     </div>
   </div>
 </nav>
 
 <!-- LANDING -->
-<section id="landing" class="pt-32 pb-24 px-6 fade">
-  <div class="max-w-4xl mx-auto text-center">
-    <span class="inline-flex items-center px-4 py-2 bg-gray-100 rounded-full text-sm mb-6">
-      San darating!
-    </span>
+<section id="landing" class="min-h-screen pt-32 pb-24 px-4 sm:px-6 animate-fade-in relative">
+  <!-- Glowing Spade Symbol -->
+  <div class="absolute top-20 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-0" style="opacity: 0.4; filter: blur(60px);">
+    <svg width="500" height="500" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M100 30L70 70L80 80L100 75L120 80L130 70L100 30Z" fill="#7DD3FC"/>
+      <path d="M100 75L100 150L70 160L70 140L100 130L130 140L130 160L100 150Z" fill="#7DD3FC"/>
+    </svg>
+  </div>
+  <div class="absolute top-20 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-0" style="opacity: 0.6;">
+    <svg width="300" height="300" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M100 30L70 70L80 80L100 75L120 80L130 70L100 30Z" fill="#7DD3FC"/>
+      <path d="M100 75L100 150L70 160L70 140L100 130L130 140L130 160L100 150Z" fill="#7DD3FC"/>
+    </svg>
+  </div>
+  <div class="max-w-5xl mx-auto text-center relative z-10">
+    <!-- Badge -->
+    <div class="inline-flex items-center px-4 py-2 rounded-full text-sm font-bold text-white mb-8 badge-pulse" style="background: rgba(0, 0, 0, 0.6); border: 2px solid rgba(204, 0, 0, 0.6); box-shadow: 0 4px 20px rgba(204, 0, 0, 0.5), inset 0 0 20px rgba(204, 0, 0, 0.2);">
+      <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+      </svg>
+      New Music Coming Soon
+    </div>
 
-    <h1 class="text-5xl md:text-7xl font-bold mb-6">
-      Build something <span class="text-accent">beautiful</span> today
+    <!-- Hero Heading -->
+    <h1 class="text-5xl sm:text-6xl lg:text-7xl font-bold mb-6 leading-tight animate-slide-up text-white" style="text-shadow: 0 0 30px rgba(204, 0, 0, 0.8), 0 0 40px rgba(204, 0, 0, 0.6), 0 0 50px rgba(125, 211, 252, 0.3);">
+      Experience the 
+      <span class="text-white" style="text-shadow: 0 0 20px rgba(204, 0, 0, 0.8), 0 0 30px rgba(204, 0, 0, 0.6), 0 0 40px rgba(125, 211, 252, 0.4);">retro-funk</span> 
+      sound
     </h1>
 
-    <p class="text-gray-500 text-lg max-w-2xl mx-auto mb-10">
-      Lorem ipsum dolor sit amet consectetur, adipisicing elit. Facere, quaerat veritatis voluptate perspiciatis aliquam ab deserunt, laborum aspernatur animi beatae provident quidem perferendis porro iste adipisci sapiente deleniti nemo officia.
+    <!-- Subheading -->
+    <p class="text-white text-lg sm:text-xl max-w-3xl mx-auto mb-10 leading-relaxed animate-slide-up font-medium" style="animation-delay: 0.1s; text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);">
+      Join the IV of Spades community. Get exclusive access to new music, concert updates, and connect with fellow fans of Filipino funk music.
     </p>
 
-    <div class="flex justify-center gap-4">
-      <button onclick="showAuth()" class="bg-black text-white px-6 py-3 rounded-lg">
-        Sign up for free
+    <!-- CTA Buttons -->
+    <div class="flex flex-col sm:flex-row justify-center gap-4 mb-16 animate-slide-up" style="animation-delay: 0.2s">
+      <button 
+        onclick="showAuth()" 
+        class="btn-primary flex items-center justify-center gap-2"
+        aria-label="Sign up for free">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+        </svg>
+        Join the Community
       </button>
-      <button class="border px-6 py-3 rounded-lg">
-        Learn more
+      <button 
+        onclick="scrollToFeatures()" 
+        class="btn-secondary flex items-center justify-center gap-2"
+        aria-label="Learn more about our features">
+        Listen Now
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+        </svg>
       </button>
+    </div>
+
+    <!-- Features Grid -->
+    <div id="features" class="grid md:grid-cols-3 gap-8 mt-24 text-left">
+      <div class="p-6 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 animate-scale-in" style="animation-delay: 0.3s; background: rgba(0, 0, 0, 0.6); backdrop-filter: blur(20px); border: 2px solid rgba(204, 0, 0, 0.5); box-shadow: 0 8px 30px rgba(204, 0, 0, 0.4), inset 0 0 30px rgba(204, 0, 0, 0.1);">
+        <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-4 shadow-lg" style="background: linear-gradient(135deg, #CC0000 0%, #990000 100%); box-shadow: 0 4px 20px rgba(204, 0, 0, 0.8);">
+          <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+          </svg>
+        </div>
+        <h3 class="text-xl font-bold mb-2 text-white">Retro-Funk Sound</h3>
+        <p class="text-gray-300">Experience the unique blend of retro and funk that defines IV of Spades. Our music brings together classic vibes with modern energy.</p>
+      </div>
+
+      <div class="p-6 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 animate-scale-in" style="animation-delay: 0.4s; background: rgba(0, 0, 0, 0.6); backdrop-filter: blur(20px); border: 2px solid rgba(204, 0, 0, 0.5); box-shadow: 0 8px 30px rgba(204, 0, 0, 0.4), inset 0 0 30px rgba(204, 0, 0, 0.1);">
+        <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-4 shadow-lg" style="background: linear-gradient(135deg, #E68900 0%, #CC7700 100%); box-shadow: 0 4px 20px rgba(230, 137, 0, 0.8);">
+          <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3"/>
+          </svg>
+        </div>
+        <h3 class="text-xl font-bold mb-2 text-white">Exclusive Content</h3>
+        <p class="text-gray-300">Get early access to new releases, behind-the-scenes content, and exclusive merchandise. Be the first to know about upcoming shows and events.</p>
+      </div>
+
+      <div class="p-6 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 animate-scale-in" style="animation-delay: 0.5s; background: rgba(0, 0, 0, 0.6); backdrop-filter: blur(20px); border: 2px solid rgba(125, 211, 252, 0.5); box-shadow: 0 8px 30px rgba(125, 211, 252, 0.3), inset 0 0 30px rgba(125, 211, 252, 0.1);">
+        <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-4 shadow-lg" style="background: linear-gradient(135deg, #7DD3FC 0%, #0EA5E9 100%); box-shadow: 0 4px 20px rgba(125, 211, 252, 0.8);">
+          <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>
+          </svg>
+        </div>
+        <h3 class="text-xl font-bold mb-2 text-white">Join the Community</h3>
+        <p class="text-gray-300">Connect with fellow fans, share your favorite moments, and be part of the IV of Spades family. Together we celebrate Filipino music.</p>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- AUTH -->
-<section id="auth" class="hidden min-h-screen flex items-center justify-center bg-gray-100 px-6 fade">
-  <div class="w-full max-w-md">
-    <button onclick="showLanding()" class="text-sm text-gray-500 mb-6">← Back</button>
+<!-- AUTH SECTION -->
+<section id="auth" class="hidden min-h-screen flex items-center justify-center px-4 sm:px-6 py-12 animate-fade-in" style="background: linear-gradient(180deg, #CC0000 0%, #990000 50%, #000000 100%); background-attachment: fixed;">
+  <div class="w-full max-w-2xl">
+    <button 
+      onclick="showLanding()" 
+      class="flex items-center gap-2 text-sm text-white hover:text-red-300 mb-6 transition-colors group font-semibold"
+      aria-label="Go back to home page">
+      <svg class="w-5 h-5 transition-transform group-hover:-translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
+      </svg>
+      Back to home
+    </button>
 
     <!-- AUTH CARD -->
-    <div class="bg-white p-8 rounded-xl shadow-lg">
-    <h1 class="text-2xl font-bold text-center mb-6">Welcome Back</h1>
-
-    <!-- LOGIN FORM -->
-    <form id="loginForm" class="space-y-4">
-      <div>
-        <label class="block text-sm font-medium text-gray-600">Email</label>
-        <input type="email" required
-          class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none" />
+    <div class="p-8 sm:p-10 rounded-2xl shadow-2xl border-2 border-red-600 animate-scale-in" style="background: rgba(0, 0, 0, 0.7); backdrop-filter: blur(20px); box-shadow: 0 8px 40px rgba(204, 0, 0, 0.5), inset 0 0 40px rgba(204, 0, 0, 0.2);">
+      <div class="text-center mb-8">
+        <h1 class="text-3xl font-bold mb-2 text-white" style="text-shadow: 0 0 20px rgba(204, 0, 0, 0.8);">Welcome Back</h1>
+        <p class="text-gray-300 font-medium">Sign in to access exclusive IV of Spades content</p>
       </div>
 
-      <div>
-        <label class="block text-sm font-medium text-gray-600">Password</label>
-        <input type="password" required
-          class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none" />
-      </div>
+      <!-- LOGIN FORM -->
+      <form id="loginForm" class="space-y-5">
+        <div>
+          <label for="loginEmail" class="block text-sm font-semibold text-gray-200 mb-2">Email Address</label>
+          <input 
+            type="email" 
+            id="loginEmail"
+            required
+            placeholder="you@example.com"
+            class="input-field"
+            aria-label="Email address"
+            aria-required="true" />
+        </div>
 
-      <div class="flex items-center justify-between text-sm">
-        <label class="flex items-center gap-2">
-          <input type="checkbox" />
-          Remember me
-        </label>
-        <a href="#" class="text-blue-500 hover:underline">Forgot password?</a>
-      </div>
+        <div>
+          <label for="loginPassword" class="block text-sm font-semibold text-gray-200 mb-2">Password</label>
+          <div class="relative">
+            <input 
+              type="password" 
+              id="loginPassword"
+              required
+              placeholder="Enter your password"
+              class="input-field pr-10"
+              aria-label="Password"
+              aria-required="true" />
+            <button 
+              type="button"
+              onclick="togglePassword('loginPassword')"
+              class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-cyan-400 transition-colors"
+              aria-label="Toggle password visibility">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+              </svg>
+            </button>
+          </div>
+        </div>
 
-      <button
-        class="w-full bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600 transition">
-        Login
-      </button>
-    </form>
+        <div class="flex items-center justify-between text-sm">
+          <label class="flex items-center gap-2 cursor-pointer group">
+            <input 
+              type="checkbox" 
+              id="rememberMe"
+              class="w-4 h-4 text-accent-500 border-gray-300 rounded focus:ring-2 focus:ring-accent-500 cursor-pointer" />
+            <span class="text-gray-300 group-hover:text-white transition-colors font-medium">Remember me</span>
+          </label>
+          <a 
+            href="#" 
+            onclick="showForgotPassword(event)"
+            class="text-accent-500 hover:text-accent-600 font-medium transition-colors">
+            Forgot password?
+          </a>
+        </div>
 
-      <p class="text-center text-sm mt-6">
-        Don't have an account?
-        <button id="openSignup" class="text-blue-500 font-medium hover:underline">
-          Create one
+        <button
+          type="submit"
+          class="w-full btn-primary flex items-center justify-center gap-2 relative"
+          aria-label="Sign in to your account">
+          <span id="loginBtnText">Sign in</span>
+          <span id="loginSpinner" class="hidden spinner"></span>
         </button>
-      </p>
+      </form>
+
+      <div class="mt-6 text-center">
+        <p class="text-sm text-gray-300 font-medium">
+          Don't have an account?
+          <button 
+            id="openSignup" 
+            class="text-accent-500 hover:text-accent-600 font-semibold transition-colors ml-1"
+            aria-label="Create a new account">
+            Sign up
+          </button>
+        </p>
+      </div>
     </div>
   </div>
 </section>
 
-  <!-- SIGNUP MODAL -->
-  <div id="signupModal"
-    class="fixed inset-0 bg-black/50 hidden flex items-center justify-center">
+<!-- SIGNUP MODAL -->
+<div id="signupModal" class="fixed inset-0 bg-black/80 backdrop-blur-sm hidden flex items-center justify-center z-50 p-4 animate-fade-in" style="background: rgba(0, 0, 0, 0.85);">
+  <div class="w-full max-w-2xl p-8 rounded-2xl shadow-2xl relative animate-scale-in border-2 border-red-600" role="dialog" aria-modal="true" aria-labelledby="signupTitle" style="background: rgba(0, 0, 0, 0.85); backdrop-filter: blur(20px); box-shadow: 0 8px 40px rgba(204, 0, 0, 0.5), inset 0 0 40px rgba(204, 0, 0, 0.2);">
+    <button 
+      id="closeSignup"
+      class="absolute right-4 top-4 text-gray-400 hover:text-white p-2 rounded-lg hover:bg-black/50 transition-all"
+      aria-label="Close signup modal">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+      </svg>
+    </button>
 
-    <div class="bg-white w-full max-w-md p-6 rounded-xl shadow-lg relative">
-      <button id="closeSignup"
-        class="absolute right-4 top-4 text-gray-400 hover:text-gray-600 text-xl">
-        &times;
-      </button>
+    <h2 id="signupTitle" class="text-2xl font-bold mb-2 text-white">
+      Step 1: Join IV of Spades
+    </h2>
+    <p class="text-sm text-gray-300 mb-6 font-medium">
+      Join the IV of Spades community and get exclusive access.
+    </p>
 
-      <h2 id="signupTitle" class="text-xl font-bold mb-2">
-        Step 1: Personal Info
-      </h2>
-      <p class="text-sm text-gray-500 mb-4">
-        Please provide your basic information.
-      </p>
+    <!-- STEPPER -->
+    <div class="flex items-center mb-8" role="progressbar" aria-valuenow="1" aria-valuemin="1" aria-valuemax="4">
+      <div class="step active flex items-center justify-center" aria-label="Step 1">1</div>
+      <div class="step-line line"></div>
+      <div class="step flex items-center justify-center" aria-label="Step 2">2</div>
+      <div class="step-line line"></div>
+      <div class="step flex items-center justify-center" aria-label="Step 3">3</div>
+      <div class="step-line line"></div>
+      <div class="step flex items-center justify-center" aria-label="Step 4">4</div>
+    </div>
 
-      <!-- STEPPER -->
-      <div class="flex items-center mb-6">
-        <div class="step active">1</div>
-        <div class="line"></div>
-        <div class="step">2</div>
-        <div class="line"></div>
-        <div class="step">3</div>
+    <!-- FORM -->
+    <form id="signupForm" class="space-y-5">
+      <!-- STEP 1: Terms and Conditions -->
+      <div class="step-content">
+        <div class="border-2 border-red-600 rounded-xl p-6 mb-4" style="background: rgba(0, 0, 0, 0.5); backdrop-filter: blur(10px); border-color: rgba(204, 0, 0, 0.6); box-shadow: inset 0 0 30px rgba(204, 0, 0, 0.2);">
+          <div class="flex items-start gap-3 mb-4">
+            <svg class="w-6 h-6 flex-shrink-0 mt-1" fill="currentColor" viewBox="0 0 20 20" style="color: #7DD3FC; filter: drop-shadow(0 0 10px rgba(125, 211, 252, 0.8));">
+              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+            </svg>
+            <div>
+              <h3 class="font-semibold text-white mb-2">Welcome to IV of Spades!</h3>
+              <p class="text-sm text-gray-300 mb-3">Please read and agree to our terms before continuing.</p>
+            </div>
+          </div>
+        </div>
+        <div class="flex items-start gap-2">
+          <input 
+            type="checkbox" 
+            id="termsCheckbox"
+            required
+            class="w-4 h-4 text-red-600 border-gray-300 rounded focus:ring-2 focus:ring-red-600 mt-1" />
+          <label for="termsCheckbox" class="text-sm text-gray-300">
+            I agree to the <a href="#" class="text-red-400 hover:text-red-300 font-medium">Terms of Service</a> and <a href="#" class="text-red-400 hover:text-red-300 font-medium">Privacy Policy</a>
+          </label>
+        </div>
       </div>
 
-      <!-- FORM -->
-      <form id="signupForm" class="space-y-4">
-        <!-- STEP 1 -->
-        <div class="step-content">
-          <input type="text" placeholder="Full Name" required
-            class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500" />
-          <input type="email" placeholder="Email Address" required
-            class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500" />
+      <!-- STEP 2: Personal Info -->
+      <div class="step-content hidden">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+          <div>
+            <label for="signupFirstName" class="block text-sm font-semibold text-gray-200 mb-2">First Name</label>
+            <input 
+              type="text" 
+              id="signupFirstName"
+              name="firstName"
+              placeholder="John" 
+              required
+              class="input-field"
+              aria-required="true" />
+            <p id="firstNameError" class="hidden text-red-500 text-sm mt-1">Please enter your first name</p>
+          </div>
+          <div>
+            <label for="signupLastName" class="block text-sm font-semibold text-gray-200 mb-2">Last Name</label>
+            <input 
+              type="text" 
+              id="signupLastName"
+              name="lastName"
+              placeholder="Doe" 
+              required
+              class="input-field"
+              aria-required="true" />
+            <p id="lastNameError" class="hidden text-red-500 text-sm mt-1">Please enter your last name</p>
+          </div>
         </div>
-
-        <!-- STEP 2 -->
-        <div class="step-content hidden">
-          <input type="password" placeholder="Password (min 6 chars)" required
-            class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500" />
-          <input type="password" placeholder="Confirm Password" required
-            class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500" />
+        <div class="mb-4">
+          <label for="signupUsername" class="block text-sm font-semibold text-gray-200 mb-2">Username</label>
+          <input 
+            type="text" 
+            id="signupUsername"
+            name="username"
+            placeholder="johndoe" 
+            required
+            class="input-field"
+            aria-required="true" />
+          <p id="usernameError" class="hidden text-red-500 text-sm mt-1">Username must be 3-20 characters (letters, numbers, and underscores only)</p>
         </div>
-
-        <!-- STEP 3 -->
-        <div class="step-content hidden">
-          <p class="text-sm text-gray-600">
-            Review your information and click register to complete your account.
-          </p>
+        <div class="mb-4">
+          <label for="signupEmail" class="block text-sm font-semibold text-gray-200 mb-2">Email Address</label>
+          <input 
+            type="email" 
+            id="signupEmail"
+            name="email"
+            placeholder="john@example.com" 
+            required
+            class="input-field"
+            aria-required="true" />
+          <p id="emailError" class="hidden text-red-500 text-sm mt-1">Please enter a valid email address</p>
         </div>
-
-        <!-- NAV BUTTONS -->
-        <div class="flex justify-between pt-4">
-          <button type="button" id="prevBtn"
-            class="hidden px-4 py-2 bg-gray-200 rounded-lg hover:bg-gray-300">
-            Back
-          </button>
-
-          <button type="button" id="nextBtn"
-            class="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600">
-            Next
-          </button>
-
-          <button type="submit" id="registerBtn"
-            class="hidden px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600">
-            Register
-          </button>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div>
+            <label for="signupPhone" class="block text-sm font-semibold text-gray-200 mb-2">Phone Number <span class="text-gray-400 font-normal">(Optional)</span></label>
+            <input 
+              type="tel" 
+              id="signupPhone"
+              name="phone"
+              placeholder="+63 9XX XXX XXXX or 09XX XXX XXXX" 
+              class="input-field"
+              aria-required="false" />
+            <p id="phoneError" class="hidden text-red-500 text-sm mt-1">Please enter a valid Philippine phone number</p>
+          </div>
+          <div>
+            <label for="signupDateOfBirth" class="block text-sm font-semibold text-gray-200 mb-2">Date of Birth <span class="text-gray-400 font-normal">(Optional)</span></label>
+            <input 
+              type="date" 
+              id="signupDateOfBirth"
+              name="dateOfBirth"
+              max=""
+              class="input-field"
+              aria-required="false" />
+            <p id="dobError" class="hidden text-red-500 text-sm mt-1">Date of birth cannot be in the future</p>
+          </div>
         </div>
-      </form>
-    </div>
+      </div>
+
+      <!-- STEP 3: Password -->
+      <div class="step-content hidden">
+        <div class="mb-4">
+          <label for="signupPassword" class="block text-sm font-semibold text-gray-200 mb-2">Password</label>
+          <div class="relative">
+            <input 
+              type="password" 
+              id="signupPassword"
+              placeholder="Min. 8 characters" 
+              required
+              class="input-field pr-10"
+              aria-required="true" />
+            <button 
+              type="button"
+              onclick="togglePassword('signupPassword')"
+              class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-cyan-400 transition-colors"
+              aria-label="Toggle password visibility">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+              </svg>
+            </button>
+          </div>
+          <p id="passwordError" class="hidden text-red-500 text-sm mt-1">Password must be at least 8 characters</p>
+          <!-- Password strength indicator -->
+          <div class="mt-2 space-y-1">
+            <div class="flex gap-1">
+              <div id="strength1" class="h-1 flex-1 bg-gray-200 rounded transition-colors"></div>
+              <div id="strength2" class="h-1 flex-1 bg-gray-200 rounded transition-colors"></div>
+              <div id="strength3" class="h-1 flex-1 bg-gray-200 rounded transition-colors"></div>
+              <div id="strength4" class="h-1 flex-1 bg-gray-200 rounded transition-colors"></div>
+            </div>
+            <p id="strengthText" class="text-xs text-gray-500"></p>
+          </div>
+        </div>
+        <div>
+          <label for="signupConfirmPassword" class="block text-sm font-semibold text-gray-200 mb-2">Confirm Password</label>
+          <input 
+            type="password" 
+            id="signupConfirmPassword"
+            placeholder="Re-enter your password" 
+            required
+            class="input-field"
+            aria-required="true" />
+          <p id="confirmPasswordError" class="hidden text-red-500 text-sm mt-1">Passwords do not match</p>
+        </div>
+      </div>
+
+      <!-- STEP 4: Confirmation -->
+      <div class="step-content hidden">
+        <div class="border-2 border-red-600 rounded-xl p-6 mb-4" style="background: rgba(0, 0, 0, 0.5); backdrop-filter: blur(10px); border-color: rgba(204, 0, 0, 0.6); box-shadow: inset 0 0 30px rgba(204, 0, 0, 0.2);">
+          <div class="flex items-start gap-3">
+            <svg class="w-6 h-6 flex-shrink-0 mt-1" fill="currentColor" viewBox="0 0 20 20" style="color: #7DD3FC; filter: drop-shadow(0 0 10px rgba(125, 211, 252, 0.8));">
+              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+            </svg>
+            <div>
+              <h3 class="font-semibold text-white mb-2">Almost there!</h3>
+              <p class="text-sm text-gray-300 mb-3">Please review your information:</p>
+              <div class="space-y-1 text-sm">
+                <p class="text-gray-200"><span class="font-medium text-white">Username:</span> <span id="reviewUsername"></span></p>
+                <p class="text-gray-200"><span class="font-medium text-white">First Name:</span> <span id="reviewFirstName"></span></p>
+                <p class="text-gray-200"><span class="font-medium text-white">Last Name:</span> <span id="reviewLastName"></span></p>
+                <p class="text-gray-200"><span class="font-medium text-white">Email:</span> <span id="reviewEmail"></span></p>
+                <p class="text-gray-200" id="reviewPhoneContainer"><span class="font-medium text-white">Phone:</span> <span id="reviewPhone"></span></p>
+                <p class="text-gray-200" id="reviewDobContainer"><span class="font-medium text-white">Date of Birth:</span> <span id="reviewDob"></span></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- NAV BUTTONS -->
+      <div class="flex justify-between pt-4">
+        <button 
+          type="button" 
+          id="prevBtn"
+          class="hidden px-5 py-2.5 bg-black/50 text-white border-2 border-red-600 rounded-lg hover:bg-black/70 transition-all active:scale-95 font-medium"
+          aria-label="Go to previous step">
+          ← Back
+        </button>
+
+        <button 
+          type="button" 
+          id="nextBtn"
+          class="ml-auto px-5 py-2.5 bg-gradient-to-r from-red-600 to-red-700 text-white rounded-lg hover:shadow-lg hover:shadow-red-600/50 transition-all active:scale-95 font-medium"
+          aria-label="Go to next step">
+          Next →
+        </button>
+
+        <button 
+          type="submit" 
+          id="registerBtn"
+          class="hidden ml-auto px-5 py-2.5 bg-gradient-to-r from-red-600 to-red-700 text-white rounded-lg hover:shadow-lg hover:shadow-red-600/50 transition-all active:scale-95 font-medium flex items-center gap-2"
+          aria-label="Complete registration">
+          <span id="registerBtnText">Register</span>
+          <span id="registerSpinner" class="hidden spinner"></span>
+        </button>
+      </div>
+    </form>
   </div>
+</div>
 
-  <!-- JS -->
-  <script>
-    const landing = document.getElementById("landing");
-    const auth = document.getElementById("auth");
-    const modal = document.getElementById("signupModal");
-    const openBtn = document.getElementById("openSignup");
-    const closeBtn = document.getElementById("closeSignup");
+<!-- TOAST NOTIFICATION -->
+<div id="toast" class="fixed top-20 right-4 hidden z-50 animate-toast" role="alert" aria-live="polite">
+  <div class="shadow-2xl rounded-lg p-4 flex items-center gap-3 border-l-4 min-w-[300px]" style="background: rgba(0, 0, 0, 0.9); border-color: rgba(204, 0, 0, 0.8); backdrop-filter: blur(10px);">
+    <div id="toastIcon" class="flex-shrink-0"></div>
+    <div>
+      <p id="toastTitle" class="font-semibold text-sm"></p>
+      <p id="toastMessage" class="text-sm text-gray-300"></p>
+    </div>
+    <button onclick="hideToast()" class="ml-auto text-gray-400 hover:text-gray-600" aria-label="Close notification">
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+      </svg>
+    </button>
+  </div>
+</div>
 
-    const steps = document.querySelectorAll(".step");
-    const contents = document.querySelectorAll(".step-content");
-    const prevBtn = document.getElementById("prevBtn");
-    const nextBtn = document.getElementById("nextBtn");
-    const registerBtn = document.getElementById("registerBtn");
-    const title = document.getElementById("signupTitle");
+<!-- FOOTER -->
+<footer class="py-12 px-4 sm:px-6" style="background: rgba(0, 0, 0, 0.8); border-top: 2px solid rgba(204, 0, 0, 0.5);">
+  <div class="max-w-7xl mx-auto text-center">
+    <div class="flex items-center justify-center gap-2 mb-4">
+      <img src="images/spade.png" alt="IV of Spades Logo" class="w-10 h-10 object-contain" style="filter: brightness(0) invert(1) drop-shadow(0 0 10px rgba(125, 211, 252, 0.8));">
+      <span class="font-bold text-xl text-white">IV of Spades</span>
+    </div>
+    <p class="text-gray-300 mb-4">Experience the retro-funk sound</p>
+    <p class="text-sm text-gray-400">&copy; 2026 IV of Spades. All rights reserved.</p>
+  </div>
+</footer>
 
-    let current = 0;
+<script src="script.js"></script>
 
-    const titles = [
-      "Step 1: Personal Info",
-      "Step 2: Account Security",
-      "Step 3: Confirmation"
-    ];
-
-    function showAuth() {
-      landing.classList.add("hidden");
-      auth.classList.remove("hidden");
+<script>
+  // Set max date for date of birth to today
+  document.addEventListener('DOMContentLoaded', () => {
+    const dobInput = document.getElementById('signupDateOfBirth');
+    if (dobInput) {
+      const today = new Date().toISOString().split('T')[0];
+      dobInput.setAttribute('max', today);
     }
-
-    function showLanding() {
-      auth.classList.add("hidden");
-      landing.classList.remove("hidden");
-      modal.classList.add("hidden");
-    }
-
-    function updateStepper() {
-      steps.forEach((s, i) => {
-        s.classList.toggle("active", i <= current);
-      });
-
-      contents.forEach((c, i) => {
-        c.classList.toggle("hidden", i !== current);
-      });
-
-      title.textContent = titles[current];
-
-      prevBtn.classList.toggle("hidden", current === 0);
-      nextBtn.classList.toggle("hidden", current === steps.length - 1);
-      registerBtn.classList.toggle("hidden", current !== steps.length - 1);
-    }
-
-    openBtn.onclick = () => modal.classList.remove("hidden");
-    closeBtn.onclick = () => modal.classList.add("hidden");
-
-    nextBtn.onclick = () => {
-      if (current < steps.length - 1) current++;
-      updateStepper();
-    };
-
-    prevBtn.onclick = () => {
-      if (current > 0) current--;
-      updateStepper();
-    };
-
-    updateStepper();
-  </script>
-
-  <!-- UI HELPERS -->
-  <style>
-    .step {
-      width: 2rem;
-      height: 2rem;
-      border-radius: 9999px;
-      background: #e5e7eb;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 600;
-      color: #6b7280;
-    }
-    .step.active {
-      background: #3b82f6;
-      color: white;
-    }
-    .line {
-      flex: 1;
-      height: 4px;
-      background: #e5e7eb;
-      margin: 0 8px;
-    }
-  </style>
+  });
+</script>
 
 </body>
 </html>
