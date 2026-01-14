@@ -32,217 +32,197 @@
   </style>
 </head>
 
-<body class="bg-white text-gray-900 font-sans">
+<body class="min-h-screen flex items-center justify-center bg-gray-100">
 
-<!-- NAV -->
-<nav class="fixed top-0 left-0 right-0 bg-white/80 backdrop-blur border-b z-50">
-  <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
-    <span class="font-semibold text-xl">minimal.</span>
-    <div class="space-x-2">
-      <button onclick="showAuth(false)" class="text-gray-500 hover:text-black">
-        Sign in
-      </button>
-      <button onclick="showAuth(true)" class="bg-black text-white px-4 py-2 rounded-lg">
-        Get started
-      </button>
-    </div>
-  </div>
-</nav>
+  <!-- AUTH CARD -->
+  <div class="w-full max-w-md bg-white p-8 rounded-xl shadow-lg">
+    <h1 class="text-2xl font-bold text-center mb-6">Welcome Back</h1>
 
-<!-- LANDING -->
-<section id="landing" class="pt-32 pb-24 px-6 fade">
-  <div class="max-w-4xl mx-auto text-center">
-    <span class="inline-flex items-center px-4 py-2 bg-gray-100 rounded-full text-sm mb-6">
-      San darating!
-    </span>
+    <!-- LOGIN FORM -->
+    <form id="loginForm" class="space-y-4">
+      <div>
+        <label class="block text-sm font-medium text-gray-600">Email</label>
+        <input type="email" required
+          class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none" />
+      </div>
 
-    <h1 class="text-5xl md:text-7xl font-bold mb-6">
-      Build something <span class="text-accent">beautiful</span> today
-    </h1>
+      <div>
+        <label class="block text-sm font-medium text-gray-600">Password</label>
+        <input type="password" required
+          class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none" />
+      </div>
 
-    <p class="text-gray-500 text-lg max-w-2xl mx-auto mb-10">
-      Lorem ipsum dolor sit amet consectetur, adipisicing elit. Facere, quaerat veritatis voluptate perspiciatis aliquam ab deserunt, laborum aspernatur animi beatae provident quidem perferendis porro iste adipisci sapiente deleniti nemo officia.
-    </p>
+      <div class="flex items-center justify-between text-sm">
+        <label class="flex items-center gap-2">
+          <input type="checkbox" />
+          Remember me
+        </label>
+        <a href="#" class="text-blue-500 hover:underline">Forgot password?</a>
+      </div>
 
-    <div class="flex justify-center gap-4">
-      <button onclick="showAuth(true)" class="bg-black text-white px-6 py-3 rounded-lg">
-        Sign up for free
-      </button>
-      <button class="border px-6 py-3 rounded-lg">
-        Learn more
-      </button>
-    </div>
-  </div>
-</section>
-
-<!-- AUTH -->
-<section id="auth" class="hidden min-h-screen flex items-center justify-center px-6 fade">
-  <div class="max-w-md w-full">
-    <button onclick="showLanding()" class="text-sm text-gray-500 mb-6">← Back</button>
-
-    <h2 id="authTitle" class="text-3xl font-bold mb-2"></h2>
-    <p id="authSubtitle" class="text-gray-500 mb-6"></p>
-
-    <form id="authForm" class="space-y-4">
-
-      <input id="fullName" type="text" placeholder="Full name"
-        class="w-full border rounded-lg px-4 py-3" />
-
-      <input id="username" type="text" placeholder="Username"
-        class="w-full border rounded-lg px-4 py-3" />
-
-      <input id="email" type="email" placeholder="you@example.com"
-        class="w-full border rounded-lg px-4 py-3" />
-
-      <input id="password" type="password" placeholder="Password"
-        class="w-full border rounded-lg px-4 py-3" />
-
-      <input id="confirmPassword" type="password" placeholder="Confirm password"
-        class="w-full border rounded-lg px-4 py-3" />
-
-      <label id="termsWrap" class="flex items-center gap-2 text-sm text-gray-600">
-        <input id="terms" type="checkbox" />
-        I agree to the Terms & Conditions
-      </label>
-
-      <p id="error" class="text-sm text-red-500 hidden"></p>
-
-      <button type="submit" class="w-full bg-black text-white py-3 rounded-lg">
-        Continue
+      <button
+        class="w-full bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600 transition">
+        Login
       </button>
     </form>
 
-    <!-- ✅ FIXED FOOTER -->
-    <p class="text-sm text-center text-gray-500 mt-6">
-      <span id="authFooterText"></span>
-      <button onclick="toggleMode()" class="font-medium underline ml-1" id="authFooterBtn"></button>
+    <p class="text-center text-sm mt-6">
+      Don’t have an account?
+      <button id="openSignup" class="text-blue-500 font-medium hover:underline">
+        Create one
+      </button>
     </p>
   </div>
-</section>
 
-<!-- DASHBOARD -->
-<section id="dashboard" class="hidden min-h-screen fade">
-  <nav class="border-b px-6 py-4 flex justify-between">
-    <span class="font-semibold">minimal.</span>
-    <button onclick="logout()" class="text-sm text-gray-500">Sign out</button>
-  </nav>
+  <!-- SIGNUP MODAL -->
+  <div id="signupModal"
+    class="fixed inset-0 bg-black/50 hidden flex items-center justify-center">
 
-  <main class="max-w-6xl mx-auto px-6 py-12">
-    <h1 class="text-3xl font-bold mb-2">Welcome back</h1>
-    <p id="userEmail" class="text-gray-500 mb-8"></p>
+    <div class="bg-white w-full max-w-md p-6 rounded-xl shadow-lg relative">
+      <button id="closeSignup"
+        class="absolute right-4 top-4 text-gray-400 hover:text-gray-600 text-xl">
+        &times;
+      </button>
 
-    <div class="grid md:grid-cols-3 gap-6">
-      <div class="border rounded-2xl p-6">Feature 1</div>
-      <div class="border rounded-2xl p-6">Feature 2</div>
-      <div class="border rounded-2xl p-6">Feature 3</div>
+      <h2 id="signupTitle" class="text-xl font-bold mb-2">
+        Step 1: Personal Info
+      </h2>
+      <p class="text-sm text-gray-500 mb-4">
+        Please provide your basic information.
+      </p>
+
+      <!-- STEPPER -->
+      <div class="flex items-center mb-6">
+        <div class="step active">1</div>
+        <div class="line"></div>
+        <div class="step">2</div>
+        <div class="line"></div>
+        <div class="step">3</div>
+      </div>
+
+      <!-- FORM -->
+      <form id="signupForm" class="space-y-4">
+        <!-- STEP 1 -->
+        <div class="step-content">
+          <input type="text" placeholder="Full Name" required
+            class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500" />
+          <input type="email" placeholder="Email Address" required
+            class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500" />
+        </div>
+
+        <!-- STEP 2 -->
+        <div class="step-content hidden">
+          <input type="password" placeholder="Password (min 6 chars)" required
+            class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500" />
+          <input type="password" placeholder="Confirm Password" required
+            class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500" />
+        </div>
+
+        <!-- STEP 3 -->
+        <div class="step-content hidden">
+          <p class="text-sm text-gray-600">
+            Review your information and click register to complete your account.
+          </p>
+        </div>
+
+        <!-- NAV BUTTONS -->
+        <div class="flex justify-between pt-4">
+          <button type="button" id="prevBtn"
+            class="hidden px-4 py-2 bg-gray-200 rounded-lg hover:bg-gray-300">
+            Back
+          </button>
+
+          <button type="button" id="nextBtn"
+            class="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600">
+            Next
+          </button>
+
+          <button type="submit" id="registerBtn"
+            class="hidden px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600">
+            Register
+          </button>
+        </div>
+      </form>
     </div>
-  </main>
-</section>
+  </div>
 
-<script>
-  let isSignup = true;
+  <!-- JS -->
+  <script>
+    const modal = document.getElementById("signupModal");
+    const openBtn = document.getElementById("openSignup");
+    const closeBtn = document.getElementById("closeSignup");
 
-  const landing = document.getElementById("landing");
-  const auth = document.getElementById("auth");
-  const dashboard = document.getElementById("dashboard");
-  const error = document.getElementById("error");
+    const steps = document.querySelectorAll(".step");
+    const contents = document.querySelectorAll(".step-content");
+    const prevBtn = document.getElementById("prevBtn");
+    const nextBtn = document.getElementById("nextBtn");
+    const registerBtn = document.getElementById("registerBtn");
+    const title = document.getElementById("signupTitle");
 
-  function showAuth(signup) {
-    isSignup = signup;
-    landing.classList.add("hidden");
-    auth.classList.remove("hidden");
-    updateMode();
-  }
+    let current = 0;
 
-  function showLanding() {
-    auth.classList.add("hidden");
-    landing.classList.remove("hidden");
-  }
+    const titles = [
+      "Step 1: Personal Info",
+      "Step 2: Account Security",
+      "Step 3: Confirmation"
+    ];
 
-  function toggleMode() {
-    isSignup = !isSignup;
-    updateMode();
-  }
+    function updateStepper() {
+      steps.forEach((s, i) => {
+        s.classList.toggle("active", i <= current);
+      });
 
-  function updateMode() {
-    document.getElementById("authTitle").textContent =
-      isSignup ? "Create an account" : "Welcome back";
+      contents.forEach((c, i) => {
+        c.classList.toggle("hidden", i !== current);
+      });
 
-    document.getElementById("authSubtitle").textContent =
-      isSignup ? "Enter your details to get started" : "Sign in to your account";
+      title.textContent = titles[current];
 
-    document.getElementById("fullName").classList.toggle("hidden", !isSignup);
-    document.getElementById("username").classList.toggle("hidden", !isSignup);
-    document.getElementById("confirmPassword").classList.toggle("hidden", !isSignup);
-    document.getElementById("termsWrap").classList.toggle("hidden", !isSignup);
-
-    document.getElementById("authFooterText").textContent =
-      isSignup ? "Already have an account?" : "Don't have an account?";
-
-    document.getElementById("authFooterBtn").textContent =
-      isSignup ? "Sign in" : "Sign up";
-  }
-
-  document.getElementById("authForm").addEventListener("submit", (e) => {
-    e.preventDefault();
-    error.classList.add("hidden");
-
-    const fullName = fullNameEl.value?.trim?.() ?? document.getElementById("fullName").value.trim();
-    const username = document.getElementById("username").value.trim();
-    const email = document.getElementById("email").value.trim();
-    const password = document.getElementById("password").value;
-    const confirm = document.getElementById("confirmPassword").value;
-    const terms = document.getElementById("terms").checked;
-
-    if (isSignup) {
-      if (fullName.length < 3)
-        return showError("Full name must be at least 3 characters");
-
-      if (!/^[a-zA-Z0-9_]{4,15}$/.test(username))
-        return showError("Username must be 4–15 characters");
-
-      if (!terms)
-        return showError("You must accept the terms");
+      prevBtn.classList.toggle("hidden", current === 0);
+      nextBtn.classList.toggle("hidden", current === steps.length - 1);
+      registerBtn.classList.toggle("hidden", current !== steps.length - 1);
     }
 
-    if (!/^\S+@\S+\.\S+$/.test(email))
-      return showError("Invalid email address");
+    openBtn.onclick = () => modal.classList.remove("hidden");
+    closeBtn.onclick = () => modal.classList.add("hidden");
 
-    if (!/^(?=.*[A-Z])(?=.*\d).{8,}$/.test(password))
-      return showError("Password must be 8+ chars, 1 uppercase & 1 number");
+    nextBtn.onclick = () => {
+      if (current < steps.length - 1) current++;
+      updateStepper();
+    };
 
-    if (isSignup && password !== confirm)
-      return showError("Passwords do not match");
+    prevBtn.onclick = () => {
+      if (current > 0) current--;
+      updateStepper();
+    };
 
-    localStorage.setItem("user", email);
-    loadDashboard();
-  });
+    updateStepper();
+  </script>
 
-  function showError(msg) {
-    error.textContent = msg;
-    error.classList.remove("hidden");
-  }
-
-  function loadDashboard() {
-    auth.classList.add("hidden");
-    landing.classList.add("hidden");
-    dashboard.classList.remove("hidden");
-    document.getElementById("userEmail").textContent =
-      "Signed in as " + localStorage.getItem("user");
-  }
-
-  function logout() {
-    localStorage.removeItem("user");
-    dashboard.classList.add("hidden");
-    landing.classList.remove("hidden");
-  }
-
-  if (localStorage.getItem("user")) {
-    loadDashboard();
-  } else {
-    updateMode();
-  }
-</script>
+  <!-- UI HELPERS -->
+  <style>
+    .step {
+      width: 2rem;
+      height: 2rem;
+      border-radius: 9999px;
+      background: #e5e7eb;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+      color: #6b7280;
+    }
+    .step.active {
+      background: #3b82f6;
+      color: white;
+    }
+    .line {
+      flex: 1;
+      height: 4px;
+      background: #e5e7eb;
+      margin: 0 8px;
+    }
+  </style>
 
 </body>
 </html>
